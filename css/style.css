@@ -1,0 +1,548 @@
+/* Empty. Add your own CSS if you like */
+container {
+    width: 300px;
+    display: inline-block;
+}
+block {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    background: Transparent;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+    float: right;
+	color: white;
+	line-height: 70px;
+	font-size:40px;
+	text-align: center;
+}
+block[v2] {
+    height: 210px;
+}
+block[h2] {
+    width: 210px;
+}
+.ng-animate .scroll-bar {
+  visibility: visible !important;
+}
+
+.scroll-bar-fade-out{
+  opacity:1 !important
+}
+.mesas{
+	width:100px;
+	margin-bottom:1px;
+	margin-top:15px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 25px;
+	background-color:transparent;
+	color:white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+	line-height: 60px;
+	margin-left:20px;	
+}
+.mesas_phone{
+	width:100px;
+	margin-bottom:1px;
+	margin-top:1px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 25px;
+	background-color:transparent;
+	color:white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+	line-height: 60px;
+	margin-left:20px;	
+}
+.submesas{
+	width:50%;
+	margin-bottom:1px;
+	margin-top:1px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 50px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 25px;
+	background-color:transparent;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	line-height: 60px;
+	margin-left:20px;
+	border-color: #FF6F61 !important;
+	color: #FF6F61 !important;	
+}
+.notallevar{
+	width:45%;
+	margin-bottom:1px;
+	margin-top:1px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 25px;
+	background-color:transparent;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	line-height: 50px;
+	margin-left:20px;
+	border-color: #FF6F61 !important;
+	color: #FF6F61 !important;	
+}
+.notacomedor{
+	width:95%;
+	margin-bottom:20px;
+	margin-top:20px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 25px;
+	background-color:transparent;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	line-height: 50px;
+	margin-left:20px;
+	border-color: #FF6F61 !important;
+	color: #FF6F61 !important;	
+}
+.label_general{
+	margin-bottom:5px;
+	margin-top:5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 30px;
+	text-align:center;
+	background-color:transparent;
+	color: #fff !important;	
+}
+.botonbuscar{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align:center;
+	background-color:transparent;
+	color:white;
+	line-height: 30px;
+	margin-left:20px;	
+}
+.producto{
+	width:45%;
+	height:70px;
+	background-color:white;
+	border-color:white!important;
+	border-style:solid;
+	border-width:3px;
+	margin-top:5px;
+	margin-left:25px;
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;	
+}
+.producto_phone{
+	width:45%;
+	height:60px;
+	background-color:white;
+	border-color:white!important;
+	border-style:solid;
+	border-width:3px;
+	margin-top:0px;
+	margin-left:25px;
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;	
+}
+.producto_texto{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	color:#512C12;
+	font-weight: bold;
+	position: absolute;
+	  left: 50%;
+	  top: 50%;
+	  transform: translate(-50%, -50%);
+}
+.producto_imagen{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	vertical-align: middle;
+	border-color:Transparent!important;
+}
+.wide-as-needed {
+  overflow: scroll;
+  white-space: nowrap;
+}
+.letra_standard {
+  font-family: 'Open Sans', sans-serif;
+  color:white;
+  font-size: 18px;
+	padding: 7px 1px 1px 0px;
+	margin-right:-20px!important;
+}
+.letra_standard_phone {
+  font-family: 'Open Sans', sans-serif;
+  color:white;
+  font-size: 18px;
+  text-align:center;	
+}
+.clasificaciones {
+  margin-bottom:5px!important;
+  margin-top:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 20px!important;
+  text-align:center!important;
+  margin-right:20px!important;
+	background-color:transparent!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+}
+.botones_cantidades {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+   min-width:40px!important;
+   width:40px!important;
+	background-color:transparent!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	line-height: 30px;
+	min-height:40px!important;
+	height:40px!important;
+}
+.botones_cantidades_phone {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+   width:10%;
+	background-color:transparent!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	line-height: 30px;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_cantidad_ingresada_phone {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+	background-color:white!important;
+	color:#512C12!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+	width:8%;
+}
+.boton_cantidad_limpiar_phone {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+   width:10%;
+  margin-right:3px!important;
+	background-color:#e60000!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.botones_cantidades_paq {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+   min-width:40px!important;
+   width:40px!important;
+	background-color:#fff!important;
+	color:#000!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	line-height: 30px;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_cantidad_ingresada {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+	background-color:white!important;
+	color:#512C12!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_cantidad_ingresada_paq{
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+	background-color:white!important;
+	color:#512C12!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_cantidad_limpiar {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  min-width:40px!important;
+   width:40px!important;
+  margin-right:3px!important;
+	background-color:#e60000!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_productos_phone {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 15px!important;
+  text-align:center!important;
+  min-width:40px!important;
+   width:40px!important;
+  margin-right:3px!important;
+	background-color:#009432!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.boton_contenido_phone {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 25px!important;
+  text-align:center!important;
+  min-width:85px!important;
+   width:85px!important;
+  margin-right:3px!important;
+	background-color:#009432!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	min-height:40px!important;
+	height:40px!important;
+}
+.botones_personas {
+  margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 40px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+   width:13%!important;
+	background-color:transparent!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	line-height: 60px;
+	min-height:60px!important;
+	height:60px!important;
+}
+.boton_cantidad_limpiar_personas {
+	margin-bottom:10px!important;
+  font-family: 'Open Sans', sans-serif!important;
+  font-size: 40px!important;
+  text-align:center!important;
+  margin-right:3px!important;
+    min-width:60px!important;
+   width:60px!important;
+	background-color:#e60000!important;
+	color:white!important;
+	border-style: solid!important;
+	border-width: 2px!important;
+	border-color: white!important;
+	line-height: 60px;
+	min-height:60px!important;
+	height:60px!important;
+}
+.popclose {
+text-align: right;
+position: absolute;
+top: 3px;
+right: -4px;
+z-index:1000;
+color: #029dff !important;
+padding: 0px !important;
+background-color: transparent !important;
+}
+.tabla_productos_agregados {
+	width:100%;
+	margin-bottom:5px!important;
+	margin-top:10px!important;	
+	max-height:1px !important;
+	height:1px;
+}
+.tabla_productos_agregados_enc {
+	background-color:white!important;
+	color:#512C12!important;
+	font-weight: bold;
+	border: 1px solid white;	
+}
+.tabla_productos_agregado{
+	text-align:center;
+	height:30px;
+	line-height: 30px;
+	background-color:transparent!important;
+	color:white;
+	font-family: 'Open Sans', sans-serif!important;
+	font-size: 15px;
+	border: 1px solid white;
+	margin-top:-50px!important;		
+}
+.importe_total_nota {
+	width:100%;
+	margin-bottom:10px!important;
+	color:white!important;
+	font-family: 'Open Sans', sans-serif!important;
+	font-size: 25px!important;	
+	text-align:center;
+}
+.secciones{
+	margin-bottom:25px;
+	margin-top:25px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align:center;
+	margin-right:20px;
+	background-color:transparent;
+	color:white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+	line-height: 40px;	
+}
+.secciones_phone{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 25px;
+	text-align:center;
+	margin-right:15px;
+	background-color:transparent;
+	color:white;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+	line-height: 40px;	
+}
+.estructurapaquete{	
+	.popup-body {
+	  width:100%!important;
+	}
+	.popup {
+	  width:100%!important;
+	  background: #fffffff7;;
+	}
+	.popup-container .popup {
+		width:100%!important;
+	}
+}
+container_personas {
+    width: 100%;
+    display: inline-block;
+}
+block_personas {
+    width: 50px;
+    height: 70px;
+	margin-left: 0px;
+    margin-right: 10px;
+	margin-bottom: 10px;
+    background: Transparent;
+	border-style: solid;
+	border-width: 2px;
+	border-color: white;
+    float: right;
+	color: white;
+	line-height: 60px;
+	font-size:25px;
+	text-align: center;
+}
+.piezaPaquete{
+	background-color:Transparent;
+	margin-left:15px;
+	border-style: solid!important;
+	border-width: 1px!important;	
+	margin-bottom:5px;
+	border-radius: 5px;
+	text-align:center;	
+}
+.comentarios {
+	background-color:Transparent!important;
+	border-color:029dff!important;
+	color:#029dff!important;
+	border: 1px solid;
+	border-radius: 5px;	
+	margin-bottom:5px;
+	margin-right:5px;
+}
+.nombreclasificacion{
+	color:#000!important;
+	font-size:20px;
+	text-align: center;
+}
+.label_tajeta{
+	margin-bottom:5px;
+	margin-top:5px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+	text-align:center;
+	background-color:transparent;
+	color: #fff !important;	
+}
+.aplicacion{
+	width:90%;
+	margin-bottom:40px;
+	margin-top:40px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 40px;
+	text-align:center;
+	margin-right:20px;
+	border-radius: 45px;
+	background-color:transparent;
+	border-style: solid;
+	border-width: 5px;
+	border-color: white;
+	line-height: 50px;
+	margin-left:20px;
+	border-color: #F5F5EE !important;
+	color: #F5F5EE !important;
+}

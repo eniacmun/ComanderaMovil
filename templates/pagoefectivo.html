@@ -1,0 +1,38 @@
+	<div style="text-align:center;background-color:grey; ">
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Total: </p>
+			<input id="campototaltarjeta" type="text" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="informacionNota.nota[0].adeudo">
+		</div>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Cambio: </p>
+			<input id="campototaltarjeta" type="text" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="data.cambioefectivo">
+		</div>	
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Efectivo: </p>
+			<input id="campototaltarjeta" type="text" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="data.pagoefectivo">
+		</div>	
+		
+		<br><br>
+		<div style="width:100%;text-align:center;">														
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(1)">1</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(2)">2</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(3)">3</a>		
+		</div>	
+		<div style="width:100%;text-align:center;">	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(4)">4</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(5)">5</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(6)">6</a>				
+
+		</div>	
+		<div style="width:100%;text-align:center;">		
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(7)">7</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(8)">8</a>
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(9)">9</a>
+		</div>	
+		<div style="width:100%;text-align:center;">		
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivoPunto()">.</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoEfectivo(0)">0</a>		
+			<a class="button boton_cantidad_limpiar_personas" ng-click="limpiaEfectivo()">C</a>	
+		</div>
+		<p class="label_general">{{mensajepagofectivo}} </p>		
+	</div>	

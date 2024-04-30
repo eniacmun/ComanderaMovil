@@ -1,0 +1,41 @@
+	<div style="text-align:center;background-color:grey; ">
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Pago: </p>
+			<input id="campototaltarjeta" type="number" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="data.pagotarjeta">
+		</div>
+		<div style="display: inline-block;width: 80px;text-align: center;">
+			<p class="label_tajeta"> + </p>
+			<p class="label_tajeta">   </p>
+		</div>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Propina: </p>
+			<input type="text" placeholder="" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="data.pagopropina">
+		</div>
+		<div style="display: inline-block;width: 80px;text-align: center;">
+			<p class="label_tajeta"> = </p>
+			<p class="label_tajeta">   </p>
+		</div>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Total: </p>
+			<input type="text" placeholder="" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="calculaPagototal()" disabled>
+		</div>
+		<br><br>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Folio: </p>
+			<input type="text" placeholder="" style="width:100%;border-radius: 15px;font-size:15px;text-align: center;"  ng-model="data.pagofolio"
+			maxlength='4' limit-char limit="4">
+		</div>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Terminal: </p>
+			<select ng-model="tipoTerminal" ng-options="terminal.nombreterminal for terminal in terminales" ng-change="onSelectTerminal(tipoTerminal)"
+			style="width:100%;border-radius: 15px;font-size:15px;text-align: center;height: 34px;"></select>
+		</div>
+		<div style="display: inline-block;width: 140px;text-align: center;">
+			<p class="label_tajeta">Tipo: </p>
+			<select ng-model="tipoS" ng-options="creditDebitc for creditDebitc in creditDebit" ng-change="onSelectTipoPago(tipoS)"
+			style="width:100%;border-radius: 15px;font-size:15px;text-align: center;height: 34px;"></select>
+		</div>
+		<label  ng-hide="muestratickepagotarjeta" class="label_tajeta"><input type="checkbox" id="imprimeticket" ng-hide="muestratickepago" class="label_tajeta"> Imprimir ticket</label><br>
+		<br><br><br>
+
+	</div>	

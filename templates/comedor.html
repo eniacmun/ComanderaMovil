@@ -1,0 +1,19 @@
+<ion-view cache-view="false" view-title="" >
+	<ion-nav-bar  class="bar-clear">
+		<ion-nav-buttons side="left">
+			<img ng-src="img/telnet.png" style=" "  height="45">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        </ion-nav-buttons>
+		<ion-nav-buttons side="right" >
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="no-header" style="top: 0;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed;  
+		-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" overflow-scroll="false">
+		<br><br><br><br>
+		<p class="label_general">Comedor</p>
+		<br>	
+		<p ng-repeat="notacomedor in notascomedor" class="notacomedor" ng-if="notacomedor.estado=='ocupado'&& notacomedor.idMesa<=100 && notacomedor.idMesa>0 && notacomedor.tipoVenta==0"
+			ng-click="getNota(notacomedor)">
+						{{notacomedor.idMesa}} </p>	
+	</ion-content>
+</ion-view>
+		

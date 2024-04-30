@@ -1,0 +1,28 @@
+<ion-view cache-view="false" view-title="" >
+	<ion-nav-bar  class="bar-clear">
+		<ion-nav-buttons side="left">
+			<img ng-src="img/telnet.png" style=" "  height="45">&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        </ion-nav-buttons>
+		<ion-nav-buttons side="right" >
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="no-header" style="top: 0;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed;  
+		-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" overflow-scroll="false">
+		<br><br><br><br>
+		<p class="label_general">Submesas</p>
+		<br><br>
+		<div ng-repeat="submesa in submesas" style="color:#000;margin-bottom:20px;text-align:center;">
+				<div class="row" ng-if="$even&&getFila($index,2)" style="text-align:center;">	
+					<p class="submesas" ng-if="submesa.mesa!=null" ng-click="getNota(submesa)">
+						{{submesa.numero}} </p>	
+					<p class="submesas" ng-if="submesas[$index+1].mesa!=null" ng-click="getNota(submesas[$index+1])">{{submesas[$index+1].numero}} </p>		
+				</div>
+		</div>
+		<div style="color:#000;margin-bottom:20px;text-align:center;">
+				<div style="text-align:center;">	
+					<p class="submesas"  ng-click="nuevaSubmesa()">	+	</p>	
+				</div>
+		</div>	
+	</ion-content>
+</ion-view>
+		

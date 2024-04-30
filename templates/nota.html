@@ -1,0 +1,203 @@
+<ion-view cache-view="false" view-title="" >
+	<ion-nav-bar  class="bar-clear">
+		<ion-nav-buttons side="left">
+			<img ng-src="img/telnet.png" style=" "  height="45">&nbsp &nbsp
+			<p style="font-size:15px;line-height: 50px;" ng-if="getDevice=='desktop'||getDevice=='tablet'">{{usuarioLogueado}}</p>
+        </ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<img ng-src="img/cuenta.png" height="45" ng-click="imprimeCuenta()" ng-if="!muestraBotonCuenta()">&nbsp &nbsp &nbsp &nbsp
+			
+			<img  ng-if="muestrabotonespago&&esUsuario&&puedecobrar&&sepuedepagar()" ng-src="img/pagar.png" height="45" ng-click="muestraPagoEfectivo()">&nbsp &nbsp &nbsp
+			<img  ng-if="muestrabotonespago&&esUsuario&&puedecobrar&&sepuedepagar()" ng-src="img/tarjetas.png" height="45" ng-click="muestraPagoTarjeta()">&nbsp &nbsp &nbsp
+			<img  ng-if="muestrabotonespago&&esUsuario&&puedecobrar&&esdelivery()" style="line-height: 100px;" ng-src="img/pagodelivery.png" height="45" ng-click="muestraPagoDelivery()">&nbsp &nbsp &nbsp
+
+			<img ng-src="img/limpiar.png" height="45" ng-click="limpia_cambios()">&nbsp &nbsp &nbsp
+			<img ng-src="img/LogOut.png" height="45" ng-click="logout()">&nbsp &nbsp &nbsp
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="no-header" style="top: 0;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed; 
+		-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" overflow-scroll="false">
+		<br><br><br><br>
+		<div ng-if="getDevice=='desktop'||getDevice=='tablet'">
+			<div class="row">
+				<div style="width:30%;margin-left:10px;border-right: 1px solid #fff;" >
+					<div style="height:40%;">
+						<div style="text-align:center;">
+							<div class="row" >	
+								<span class="input-label letra_standard">Mesa</span>&nbsp &nbsp &nbsp
+								<input type="text" placeholder="" style="width:50px;border-radius: 10px;font-size:18px;text-align: center;" ng-model="data.nomesa">
+								&nbsp 
+								<a class="input-label letra_standard">Nota</a>&nbsp &nbsp &nbsp
+								<input type="text" placeholder="" style="width:50px;border-radius: 10px;font-size:18px;text-align: center;" ng-model="data.nonota">
+								&nbsp &nbsp 
+							</div>
+						</div>					
+					</div>	
+					<br>
+					<p class="importe_total_nota">Total: ${{get_total_nota()| number :1}}</p>
+					<table class="tabla_productos_agregados">
+						<tr class="tabla_productos_agregados_enc">
+							<th>Cant</th>
+							<th >Descripcion</th>
+							<th >Comentarios</th>
+							<th>Precio</th>
+							<th>Impte</th>
+						</tr>
+					</table>
+				</div>			
+				<div style="width:70%;">	
+					<div style="margin-left:20px;">								
+							<a class="button boton_cantidad_ingresada" ng-click="">{{data.cantidadProducto}}</a>						
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(1)">1</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(2)">2</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(3)">3</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(4)">4</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(5)">5</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(6)">6</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(7)">7</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(8)">8</a>
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(9)">9</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad(0)">0</a>	
+							<a class="button botones_cantidades" ng-click="aumentaCantidad('.')">.</a>	
+							<a class="button boton_cantidad_limpiar" ng-click="limpiaCantidad()">C</a>	
+							&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+							<img ng-src="img/Plus.png" height="40" ng-click="aumentaCantidadProductoAgregado()">&nbsp &nbsp &nbsp &nbsp
+							<img ng-src="img/minus.png" height="40" ng-click="reduceCantidadProductoAgregado()">&nbsp &nbsp &nbsp &nbsp
+							<img ng-src="img/enviar.png" height="40" ng-click="mandaComanda()">	&nbsp &nbsp &nbsp &nbsp
+							<img ng-src="img/Comentario.png" height="40" ng-click="muestraComentarios()">
+					</div>
+				</div>	
+			</div>
+			
+			<div class="row">
+				<div style="width:30%;margin-left:10px;border-right: 1px solid #fff;" >
+					<div style="height:90%;max-height:95%;">
+						<ion-scroll direction="y" style="widht:100%; height:450px;" delegate-handle="productos" overflow-scroll="false">
+							<table class="tabla_productos_agregados">						
+							  <tr ng-repeat="productoAgregado in productosAgregados track by $index" class="tabla_productos_agregado" 
+									ng-click="selecciona_producto_agregado(productoAgregado,$index)" style="{{producto_agregado_stilo(clasificacion,$index)}}">
+								<td style="{{getEstadoColor(productoAgregado.estado)}}">  {{productoAgregado.cantidad}} </td>
+								<td style="{{getEstadoColor(productoAgregado.estado)}}" > {{productoAgregado.nombreproducto}} </td>
+								<td style="{{getEstadoColor(productoAgregado.estado)}}"  ><FONT size = 2> {{productoAgregado.comentario}} <FONT></td>
+								<td style="{{getEstadoColor(productoAgregado.estado)}}" > {{productoAgregado.precio | number :1}} </td>
+								<td style="{{getEstadoColor(productoAgregado.estado)}}" > {{productoAgregado.importe | number :1}} </td>
+							  </tr> 						  
+							</table>
+						</ion-scroll>
+					</div>
+				</div>			
+				<div style="width:70%;">
+					<ion-scroll direction="y" style="height:550px;" delegate-handle="productos" overflow-scroll="false" ng-if="!validaclasificaciones">
+						<div ng-repeat="producto in productos" style="color:#000;">
+							<div class="row" style="{{getProductoPhone($index)}}" ng-if="$even&&getFila($index)" >
+								<ion-item class="list card item-text-wrap producto_phone" ng-if="producto.nombreproducto!=null" ng-click="revisaProducto(producto,$index,$event)">
+									<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}"> {{producto.nombreproducto}}
+										<i ng-if="muestraPrecioProducto()&&producto.productos.length==0">${{producto.precio}}</i> </p>
+								</ion-item>
+								<ion-item class="list card item-text-wrap producto_phone" ng-if="productos[$index+1].nombreproducto!=null"
+									ng-click="revisaProducto(productos[$index+1],$index+1,$event)">
+									<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}">{{productos[$index+1].nombreproducto}}
+										<i ng-if="muestraPrecioProducto()&&productos[$index+1].productos.length==0">${{productos[$index+1].precio}}</i> </p>
+								</ion-item>
+							</div>
+						</div>
+					</ion-scroll>
+					<ion-scroll direction="y" style="height:550px;" delegate-handle="productos" overflow-scroll="false" ng-if="validaclasificaciones">
+						<div ng-repeat="producto in productos" style="color:#000;">
+							<div class="row" style="{{getProductoPhone($index)}}" ng-if="$even&&getFila($index)" >
+								<ion-item class="list card item-text-wrap producto_phone" ng-if="producto.nombreproducto!=null&&muestraProducto(producto)" ng-click="revisaProducto(producto,$index,$event)">
+									<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}"> {{producto.nombreproducto}}
+										<i ng-if="muestraPrecioProducto()&&producto.productos.length==0">${{producto.precio}}</i> </p>
+								</ion-item>
+								<ion-item class="list card item-text-wrap producto_phone" ng-if="productos[$index+1].nombreproducto!=null&&muestraProducto(productos[$index+1])"
+									ng-click="revisaProducto(productos[$index+1],$index+1,$event)">
+									<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}">{{productos[$index+1].nombreproducto}}
+										<i ng-if="muestraPrecioProducto()&&productos[$index+1].productos.length==0">${{productos[$index+1].precio}}</i> </p>
+								</ion-item>
+							</div>
+						</div>
+					</ion-scroll>	
+				</div>
+			</div>
+		</div>
+		
+		<div ng-if="getDevice=='phone'">
+			<div class="row" style="text-align:center;">
+				<div style="width:25%;margin-left:10px;border-right: 1px solid #fff;text-align:center;">
+					<p class="letra_standard_phone">Mesa: {{data.nomesa}}</p>	
+				</div>
+				<div style="width:35%;margin-left:10px;border-right: 1px solid #fff;text-align:center;">
+					<p class="letra_standard_phone">Nota: {{data.nonota}}</p>		
+				</div>
+				<div ng-click="verContenido()" style="width:40%;margin-left:10px;text-align:center;border-radius: 25px;background-color:#19B309;
+					border-style: solid;border-width: 2px;border-color: white;vertical-align: middle;line-height: 30px;">
+					<p class="letra_standard_phone">Total: {{get_total_nota()| number :1}}</p>	
+				</div>
+			</div>
+			
+			<div class="row" style="margin-left:5px;margin-top:10px;">								
+				<a class="button boton_cantidad_ingresada_phone" ng-click="">{{data.cantidadProducto}}</a>						
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(1)">1</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(2)">2</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(3)">3</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(4)">4</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(5)">5</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(6)">6</a>				
+			</div>
+			
+			<div class="row" style="margin-left:5px;">								
+				<a class="button boton_cantidad_ingresada_phone" style="background-color:transparent!important;border-color:transparent!important;"></a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(7)">7</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(8)">8</a>
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(9)">9</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad(0)">0</a>	
+				<a class="button botones_cantidades_phone" ng-click="aumentaCantidad('.')">.</a>	
+				<a class="button boton_cantidad_limpiar_phone" ng-click="limpiaCantidad()">C</a>				
+			</div>
+			
+			<ion-scroll direction="y" style="height:550px;" delegate-handle="productos" overflow-scroll="false" ng-if="!validaclasificaciones">
+				<div ng-repeat="producto in productos" style="color:#000;">
+					<div class="row" style="{{getProductoPhone($index)}}" ng-if="$even&&getFila($index)" >
+						<ion-item class="list card item-text-wrap producto_phone" ng-if="producto.nombreproducto!=null" ng-click="revisaProducto(producto,$index,$event)">
+							<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}"> {{producto.nombreproducto}}
+								<i ng-if="muestraPrecioProducto()&&producto.productos.length==0">${{producto.precio}}</i> </p>
+						</ion-item>
+						<ion-item class="list card item-text-wrap producto_phone" ng-if="productos[$index+1].nombreproducto!=null"
+							ng-click="revisaProducto(productos[$index+1],$index+1,$event)">
+							<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}">{{productos[$index+1].nombreproducto}}
+								<i ng-if="muestraPrecioProducto()&&productos[$index+1].productos.length==0">${{productos[$index+1].precio}}</i> </p>
+						</ion-item>
+					</div>
+				</div>
+			</ion-scroll>
+			<ion-scroll direction="y" style="height:550px;" delegate-handle="productos" overflow-scroll="false" ng-if="validaclasificaciones">
+				<div ng-repeat="producto in productos" style="color:#000;">
+					<div class="row" style="{{getProductoPhone($index)}}" ng-if="$even&&getFila($index)" >
+						<ion-item class="list card item-text-wrap producto_phone" ng-if="producto.nombreproducto!=null" ng-click="revisaProducto(producto,$index,$event)">
+							<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}"> {{producto.nombreproducto}}
+								<i ng-if="muestraPrecioProducto()&&producto.productos.length==0">${{producto.precio}}</i> </p>
+						</ion-item>
+						<ion-item class="list card item-text-wrap producto_phone" ng-if="productos[$index+1].nombreproducto!=null"
+							ng-click="revisaProducto(productos[$index+1],$index+1,$event)">
+							<p class="item-text-wrap" style="{{texto_producto(producto.nombreproducto)}}">{{productos[$index+1].nombreproducto}}
+								<i ng-if="muestraPrecioProducto()&&productos[$index+1].productos.length==0">${{productos[$index+1].precio}}</i> </p>
+						</ion-item>
+					</div>
+				</div>
+			</ion-scroll>				
+		</div>
+	</ion-content>
+	<div class="bar bar-footer bar-balanced"
+	style="height:70px;color:#fff;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed;border-color: Transparent;"  ng-if="!validaclasificaciones">
+		<ion-scroll direction="x" class="wide-as-needed">
+		<a class="button clasificaciones" ng-repeat="clasificacion in clasificaciones" style="{{getColorClasificacion(clasificacion)}}"
+		ng-if="muestraClasificacion(clasificacion)" ng-click="selecciona_clasificacion(clasificacion,$index)">{{clasificacion.nombreproducto}} </a>
+	</div>
+	<div class="bar bar-footer bar-balanced"
+	style="height:70px;color:#fff;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed;border-color: Transparent;" ng-if="validaclasificaciones">
+		<ion-scroll direction="x" class="wide-as-needed" >
+		<a class="button clasificaciones" ng-repeat="clasificacion in clasificaciones" style="{{getColorClasificacion(clasificacion)}}"
+		ng-if="muestraClasificacion(clasificacion)&&!muestraClasificacionCS(clasificacion)" ng-click="selecciona_clasificacion(clasificacion,$index)">{{clasificacion.nombreproducto}} </a>
+		 </ion-scroll>
+	</div>
+</ion-view>

@@ -1,0 +1,111 @@
+<ion-view cache-view="false" view-title="" >
+	<ion-nav-bar  class="bar-clear">
+		<ion-nav-buttons side="left">
+			<img ng-src="img/telnet.png" style=" "  height="45">&nbsp &nbsp
+			<p style="font-size:15px;line-height: 50px;">{{usuarioLogueado}}</p>
+        </ion-nav-buttons>
+		<ion-nav-buttons side="right" >
+			<img ng-src="img/Delivery.png" ng-click="getDelivery()" height="45" ng-if="(getDevice=='desktop'||getDevice=='tablet')&&muestrabotondelivery">&nbsp &nbsp &nbsp &nbsp
+			<img ng-src="img/Llevar.png" ng-click="getLlevar()" height="45" ng-if="getDevice=='desktop'||getDevice=='tablet'">&nbsp &nbsp &nbsp &nbsp
+			<img ng-src="img/Comedor.png" ng-click="getComedor()" height="45" ng-if="getDevice=='desktop'||getDevice=='tablet'">&nbsp &nbsp &nbsp
+			<img ng-src="img/LogOut.png" ng-click="logout()"  height="45" ng-if="getDevice=='desktop'||getDevice=='tablet'">&nbsp &nbsp &nbsp
+		</ion-nav-buttons>
+	</ion-nav-bar>
+	<ion-content class="no-header" style="top: 0;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed; 
+		-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" overflow-scroll="false">
+		<br><br><br><br>
+		<div class="row" ng-if="getDevice=='desktop'||getDevice=='tablet'">
+			<div style="width:20%;margin-left:10px;border-right: 1px solid #fff;" >
+				<h1 style="font-family: 'Open Sans', sans-serif;color:white;text-align:center;font-size: 30px;">Secciones</h1>
+				<p ng-repeat="seccion in secciones" ng-click="getSeccion(seccion.number)" class="secciones" style="{{getSeccionColor(seccion.number)}}" >
+					{{seccion.number}}</p>		
+			</div>			
+			<div style="width:80%;">	
+				<div style="margin-left:20px;text-align:center;">				
+					<div style="float:left;">
+						<h1 style="font-family: 'Open Sans', sans-serif;color:white;text-align:left;font-size: 30px;">Mesas</h1>&nbsp &nbsp &nbsp &nbsp
+					</div>
+					<div style="float:right;">
+						<div class="row" >	
+							<input type="number" placeholder="No. Mesa" style="width:150px;border-radius: 10px;font-size:18px;text-align: center;" 
+								ng-model="data.nomesaBuscar">
+							&nbsp &nbsp &nbsp &nbsp
+
+							<button class="botonbuscar icon-left ion-search" ng-click="search()"></button>	&nbsp &nbsp &nbsp &nbsp
+						</div>
+					</div>
+				</div>
+				<div ng-repeat="mesa in mesas" style="color:#000;">
+					<div class="row" ng-if="$even&&getFila($index,6)" >	
+						<p class="mesas" ng-if="mesa.idMesa!=null" style="{{getEstadoColor(mesa.estado,mesa)}}" ng-click="getNota(mesa)">
+							{{mesa.idMesa}} </p>	
+						<p class="mesas" ng-if="mesas[$index+1].idMesa!=null" style="{{getEstadoColor(mesas[$index+1].estado,mesas[$index+1])}}" 
+							ng-click="getNota(mesas[$index+1])">{{mesas[$index+1].idMesa}} </p>	
+						<p class="mesas" ng-if="mesas[$index+2].idMesa!=null" style="{{getEstadoColor(mesas[$index+2].estado,mesas[$index+2])}}" 
+							ng-click="getNota(mesas[$index+2])">{{mesas[$index+2].idMesa}} </p>	
+						<p class="mesas" ng-if="mesas[$index+3].idMesa!=null" style="{{getEstadoColor(mesas[$index+3].estado,mesas[$index+3])}}" 
+							ng-click="getNota(mesas[$index+3])">{{mesas[$index+3].idMesa}} </p>	
+						<p class="mesas" ng-if="mesas[$index+4].idMesa!=null" style="{{getEstadoColor(mesas[$index+4].estado,mesas[$index+4])}}" 
+							ng-click="getNota(mesas[$index+4])">{{mesas[$index+4].idMesa}} </p>	
+						<p class="mesas" ng-if="mesas[$index+5].idMesa!=null" style="{{getEstadoColor(mesas[$index+5].estado,mesas[$index+5])}}" 
+							ng-click="getNota(mesas[$index+5])">{{mesas[$index+5].idMesa}} </p>	
+					</div>
+				</div>
+			</div>	
+		</div>
+		
+		
+		<div ng-if="getDevice=='phone'">
+			
+			<div class="row" style="margin-bottom:10px;">
+				<img ng-src="img/Delivery.png" ng-click="getDelivery()" ng-if="muestrabotondelivery" style="width:25%;" height="45">&nbsp &nbsp &nbsp
+				<img ng-src="img/Llevar.png" ng-click="getLlevar()" style="width:25%;" height="45">&nbsp &nbsp &nbsp
+				<img ng-src="img/Comedor.png" ng-click="getComedor()" style="width:25%;" height="45">&nbsp &nbsp &nbsp
+				<img ng-src="img/LogOut.png" ng-click="logout()" style="width:25%;" height="45">&nbsp &nbsp &nbsp
+			</div>
+			<div class="row" style="margin-bottom:10px;text-align:center;">
+				<div style="width:80%;margin-left:5px;text-align:right;">
+					<input type="number" placeholder="No. Mesa" style="width:150px;border-radius: 10px;font-size:18px;text-align: center;" 
+						ng-model="data.nomesaBuscar">							
+				</div>
+				<div style="width:40%;margin-left:5px;text-align:left;">
+					<button class="botonbuscar icon-left ion-search" ng-click="search()"></button>
+				</div>
+			</div>
+			<div ng-repeat="mesa in mesas" style="color:#000;margin-bottom:20px;">
+				<div class="row" ng-if="$even&&getFila($index,4)" >	
+					<p class="mesas_phone" ng-if="mesa.idMesa!=null" style="{{getEstadoColor(mesa.estado,mesa)}}" ng-click="getNota(mesa)">
+						{{mesa.idMesa}} </p>	
+					<p class="mesas_phone" ng-if="mesas[$index+1].idMesa!=null" style="{{getEstadoColor(mesas[$index+1].estado,mesas[$index+1])}}" 
+						ng-click="getNota(mesas[$index+1])">{{mesas[$index+1].idMesa}} </p>	
+					<p class="mesas_phone" ng-if="mesas[$index+2].idMesa!=null" style="{{getEstadoColor(mesas[$index+2].estado,mesas[$index+2])}}" 
+						ng-click="getNota(mesas[$index+2])">{{mesas[$index+2].idMesa}} </p>	
+					<p class="mesas_phone" ng-if="mesas[$index+3].idMesa!=null" style="{{getEstadoColor(mesas[$index+3].estado,mesas[$index+3])}}" 
+						ng-click="getNota(mesas[$index+3])">{{mesas[$index+3].idMesa}} </p>		
+				</div>
+			</div>	
+			
+			<h1 style="font-family: 'Open Sans', sans-serif;color:white;text-align:center;font-size: 30px;margin-bottom:20px;">Secciones</h1>				
+			<div ng-repeat="seccion in secciones">
+				<div class="row" ng-if="$even&&getFila($index,4)" >	
+					<a ng-click="getSeccion(seccion.number)" class="secciones_phone" style="{{getSeccionColorPhone(seccion.number)}}"
+						ng-if="seccion.number!=null">
+						&nbsp {{seccion.number}} &nbsp </a>	
+						
+					<a ng-click="getSeccion(secciones[$index+1].number)" class="secciones_phone" style="{{getSeccionColorPhone(secciones[$index+1].number)}}"
+						ng-if="secciones[$index+1].number!=null">
+						&nbsp {{secciones[$index+1].number}} &nbsp </a>	
+						
+					<a ng-click="getSeccion(secciones[$index+2].number)" class="secciones_phone" style="{{getSeccionColorPhone(secciones[$index+2].number)}}"
+						ng-if="secciones[$index+2].number!=null">
+						&nbsp {{secciones[$index+2].number}} &nbsp </a>	
+
+					<a ng-click="getSeccion(secciones[$index+3].number)" class="secciones_phone" style="{{getSeccionColorPhone(secciones[$index+3].number)}}"
+						ng-if="secciones[$index+3].number!=null">
+						&nbsp {{secciones[$index+3].number}} &nbsp </a>			
+				</div>			
+			</div>	
+	
+		</div>
+	</ion-content>
+</ion-view>

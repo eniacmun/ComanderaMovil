@@ -1,0 +1,96 @@
+		<div ng-if="getDevice=='desktop'||getDevice=='tablet'">
+          <div  ng-repeat="estructura in estructuraPaquete" style="border-color:#fff;background-color:Transparent;">
+            <div ng-attr-id="{{$index}}" class="item item-divider" 
+				style="background-color:Transparent;text-align:left;font-size: 17px;color: #000;border-color:Transparent;" >
+              Elige tus {{estructura.nombreGrupo}}   &nbsp &nbsp &nbsp &nbsp 
+				<i class="ion-checkmark-circled" style="color:green;" ng-if="revisaTiempoCompleto($index)"></i>
+			 </div>
+            <div class="item item-divider" style="background-color:Transparent;text-align:left;font-size: 15px;color: #000;border-color:Transparent;" >
+        		(Elige {{getCantidadesGrupo(estructura)}}
+				restan {{getCantidadesAgregadasGrupo(estructura,$index)}})
+			</div>
+			<div style="background-color:Transparent;text-align:center;" >  
+				<a class="button boton_cantidad_ingresada_paq" ng-click="">{{dataE.cantidadPiezaPaquete}}</a>						
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(1)">1</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(2)">2</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(3)">3</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(4)">4</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(5)">5</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(6)">6</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(7)">7</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(8)">8</a>
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(9)">9</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(0)">0</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete('.')">.</a>	
+				<a class="button botones_cantidades_paq" ng-click="limpiaCantidadPiezaPaquete()">C</a>	
+			 </div>				
+            <ion-list style="background-color:Transparent;">
+			<div class="row" ng-repeat="producto in estructura.productos">
+				<div class="row" ng-if="$even&&getFila($index,2)">
+					<div style="width:50%;" >
+						<ion-item  class="piezaPaquete" ng-style="{{getStiloPiezaPaquete($index,estructura.tiempo)}}"
+                            ng-click="insertaPiezaPaquete(producto,$index,estructura.tiempo)" > 
+								{{producto.nombreproducto}}
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								ng-if="producto.precio>0">+ {{producto.precio| number : 2}} MXN  </span>
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								> ({{getCantidadAgregadaPiezaPaquete($index,estructura.tiempo)}}) </span>	
+						</ion-item>
+					</div>	
+					<div style="width:50%;">
+						<ion-item class="piezaPaquete" ng-style="{{getStiloPiezaPaquete($index+1,estructura.tiempo)}}" 
+							ng-if="estructura.productos[$index+1].nombreproducto"
+                            ng-click="insertaPiezaPaquete(estructura.productos[$index+1],$index+1,estructura.tiempo)"> 
+								{{estructura.productos[$index+1].nombreproducto}}
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								ng-if="estructura.productos[$index+1].precio>0"> + {{estructura.productos[$index+1].precio | number : 2}} MXN</span>
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								> ({{getCantidadAgregadaPiezaPaquete($index+1,estructura.tiempo)}}) </span>		
+						</ion-item>
+					</div>
+				</div>
+			</div>	
+            </ion-list>
+          </div>
+		</div>
+		
+		
+		<div ng-if="getDevice=='phone'">
+          <div ng-repeat="estructura in estructuraPaquete" style="border-color:#fff;background-color:Transparent;">
+            <div ng-attr-id="{{$index}}" class="item item-divider" 
+				style="background-color:Transparent;text-align:left;font-size: 17px;color: #000;border-color:Transparent;" >
+              Elige tus {{estructura.nombreGrupo}}   &nbsp &nbsp &nbsp &nbsp  
+				<i class="ion-checkmark-circled" style="color:green;" ng-if="revisaTiempoCompleto($index)"></i>
+			 </div>
+            <div class="item item-divider" style="background-color:Transparent;text-align:left;font-size: 15px;color: #000;border-color:Transparent;" >
+				(Elige {{getCantidadesGrupo(estructura)}}
+				restan {{getCantidadesAgregadasGrupo(estructura,$index)}} )
+			</div>
+			<div style="background-color:Transparent;text-align:center;" >  
+				<a class="button boton_cantidad_ingresada_paq" ng-click="">{{dataE.cantidadPiezaPaquete}}</a>						
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(1)">1</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(2)">2</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(3)">3</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(4)">4</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(5)">5</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(6)">6</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(7)">7</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(8)">8</a>
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(9)">9</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete(0)">0</a>	
+				<a class="button botones_cantidades_paq" ng-click="aumentaCantidadPiezaPaquete('.')">.</a>	
+				<a class="button botones_cantidades_paq" ng-click="limpiaCantidadPiezaPaquete()">C</a>	
+			 </div>				
+            <ion-list style="background-color:Transparent;">
+						<ion-item  ng-repeat="producto in estructura.productos" class="piezaPaquete" 
+							ng-style="{{getStiloPiezaPaquete($index,estructura.tiempo)}}"
+                            ng-click="insertaPiezaPaquete(producto,$index,estructura.tiempo)" > 
+								{{producto.nombreproducto}}
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								ng-if="producto.precio>0">+ {{producto.precio| number : 2}} MXN  </span>
+							<span class="item-note" style="color: #000 !important;font-size: 15px;background-color:Transparent;border-color:Transparent;" 
+								> ({{getCantidadAgregadaPiezaPaquete($index,estructura.tiempo)}}) </span>	
+						</ion-item>
+            </ion-list>
+          </div>
+		</div>

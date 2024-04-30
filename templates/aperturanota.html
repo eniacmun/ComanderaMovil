@@ -1,0 +1,55 @@
+<ion-view cache-view="false" view-title="" >
+	<ion-nav-bar  class="bar-clear">
+		<ion-nav-buttons side="left">
+			<img ng-src="img/telnet.png" style=" "  height="45">
+        </ion-nav-buttons>
+		<ion-nav-buttons side="right">
+			<img ng-src="img/smart.png" style=" "  height="45">
+		</ion-nav-buttons>
+	</ion-nav-bar>
+<ion-content class="no-header" style="top: 0;background: url('http://{{background}}'),url('img/fondo.jpg')no-repeat center center fixed; 
+		-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" overflow-scroll="false">
+		<br><br><br><br><br>
+		<div style="text-align:center;">
+			<p class="label_general">Numero de personas</p>
+			<br>
+			<input type="text" placeholder="" style="width:100%;border-radius: 18px;font-size:18px;text-align: center;"  ng-model="data.numeropersonas"
+			maxlength='5' limit-char limit="5">
+		</div>	
+		<br>
+		<div style="width:100%;text-align:center;">														
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(1)">1</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(2)">2</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(3)">3</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(4)">4</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(5)">5</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(6)">6</a>	
+		</div>	
+		<div style="width:100%;text-align:center;">														
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(7)">7</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(8)">8</a>
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(9)">9</a>	
+			<a class="button botones_personas" ng-click="ingresaDigitoPersonas(0)">0</a>		
+			<a class="button boton_cantidad_limpiar_personas" ng-click="limpiaPersonas()">C</a>	
+		</div>	
+		<br>
+		<li class="item item-toggle label_general" style="background-color:!Transparent;color:#fff;"> Cuentas separadas
+			<label class="toggle toggle-positive">
+				<input type="checkbox" ng-model="escuentasseparadas" ng-change="cambiocuentas()">
+				<div class="track">
+					<div class="handle"></div>
+				</div>
+			</label>
+		</li>
+		<br>
+		<div style="text-align:center;margin-top:20px;" ng-if="manejaNombreMesa">
+			<p style="font-size:30px;text-align: center;color:#fff;margin-bottom:20px;">Nombre de mesa</p>
+			<input type="text" placeholder="" style="width:102%;border-radius: 18px;font-size:18px;text-align: center;"  ng-model="data.nombremesa">
+		</div>
+		<br>	
+		<div style="text-align:center;margin-top:20px;">
+			<button class="button button-full button-positive" style="height:60px!important;font-size:50px;" ng-click="guardaInfoMesa()"
+			><i class="ion-arrow-right-a"></i></button>
+		</div>
+	</ion-content>
+</ion-view>

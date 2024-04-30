@@ -1,0 +1,11 @@
+<table class="tabla_productos_agregados">
+	<tr class="tabla_productos_agregados_enc"><th>Cant</th><th >Descripcion</th><th >Comentarios</th><th>Precio</th><th>Impte</th></tr>
+	<tr ng-repeat="productoAgregado in productosAgregados" class="tabla_productos_agregado" 
+		ng-click="selecciona_producto_agregado(productoAgregado,$index)" style="{{producto_agregado_stilo(clasificacion,$index)}}">
+	<td style="{{getEstadoColorPhone(productoAgregado.estado)}}"> {{productoAgregado.cantidad}}</td>
+	<td style="{{getEstadoColorPhone(productoAgregado.estado)}}" > {{productoAgregado.nombreproducto}} </td>
+	<td style="{{getEstadoColorPhone(productoAgregado.estado)}}"  ><FONT size = 2> {{productoAgregado.comentario}} <FONT></td>
+	<td style="{{getEstadoColorPhone(productoAgregado.estado)}}" > {{productoAgregado.precio | number :1}} </td>
+	<td style="{{getEstadoColorPhone(productoAgregado.estado)}}" > {{productoAgregado.importe | number :1}} </td>
+	</tr> 						  
+</table>

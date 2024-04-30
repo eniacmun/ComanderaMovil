@@ -1,0 +1,29 @@
+		<div ng-if="getDevice=='desktop'||getDevice=='tablet'">
+		<input type="text" placeholder="Escribe un comentario" style="width:100%;border-radius: 5px;font-size:15px;text-align: center;" 
+			ng-model="data.comentariolibre">
+          <br>
+		  <div ng-repeat="comentarioClasificacion in comentariosClasificaciones" style="border-color:#fff;background-color:Transparent;">		
+            <p class="nombreclasificacion"> {{comentarioClasificacion.nombre}}</p>
+				<div ng-repeat="comentario in comentarios">
+					<div class="row" ng-if="$even&&getFila($index,2)">
+						<div style="width:50%;" >
+							<ion-checkbox  class="comentarios" ng-if="comentario.division==comentarioClasificacion.nombre" ng-model="comentario.enabled">
+								{{comentario.comentario}}</ion-checkbox>
+						</div>	
+						<div style="width:50%;">
+							<ion-checkbox class="comentarios" ng-if="comentarios[$index+1].division==comentarioClasificacion.nombre" 
+								ng-model="comentarios[$index+1].enabled">
+								{{comentarios[$index+1].comentario}}</ion-checkbox>
+						</div>
+					</div>
+				</div>			
+          </div>
+		</div>
+		<div ng-if="getDevice=='phone'">
+				<input type="text" placeholder="Escribe un comentario" style="width:100%;border-radius: 5px;font-size:15px;text-align: center;" 
+				ng-model="data.comentariolibre">
+			<div ng-repeat="comentarioClasificacion in comentariosClasificaciones" style="border-color:#fff;background-color:Transparent;">		
+				<p class="nombreclasificacion"> {{comentarioClasificacion.nombre}}</p>
+				<ion-checkbox ng-repeat="comentario in comentarios" class="comentarios" ng-if="comentario.division==comentarioClasificacion.nombre"
+					ng-model="comentario.enabled">{{comentario.comentario}}</ion-checkbox>
+		</div>
